@@ -112,7 +112,7 @@ Status ReverseList(LinkedList *L) {
 		return SUCCESS;
 	}else while(pre->next !=NULL){
 		pre = pre->next;//前指针往前跑
-		(*L)->next = node;//当前指针指向node
+		(*L)->next = node;//当前指针的节点指向node
 		node = L;//node
 		L = pre;//头指针跟上
 

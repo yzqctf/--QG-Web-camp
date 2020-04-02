@@ -2,13 +2,16 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <stdbool.h>
-#include <linkedList.h>
+#include "../head/linkedList.h"
+#include "../linkList/linkedList.c"
 
 int main()
 {
    int n;
    LinkedList head;
+   creatList( head);
    int flag = 1;
+
    while(flag){
 	myMenu();
 	printf("\n客官想要做什么呢？（输入1~9哦）\n");
@@ -16,7 +19,7 @@ int main()
 
 		switch(n){
 		case 1:
-			void creatList(LinkedList head);
+			InitList(head);
 			break;
 		case 2:
 
@@ -48,6 +51,7 @@ int main()
 		}
 	flag = 0;
    }
+   DestroyList(head);
    return 0;
 }
 void myMenu(){
@@ -59,23 +63,25 @@ void myMenu(){
 }
 void creatList(LinkedList *h){
 	int x;//创建节点个数
-	Status InitList(LinkedList *h);//传入头节点
-	LNode pnew;
-	LinkedList p;
+	LNode *pnew;
+	LinkedList *p;
 	p = h;
-	printf("想要多长的金链子呢？\n");
+	printf("想要多长的金链子呢？(只有整数呢亲)\n");
 	scanf("%d",&x);
-	if(x==1){
+	if(x<=0){
+		printf("本店可没有这种链子哦");
+	}else if(x==1){
 		pnew = (LNode *)malloc(sizeof(struct LNode));//为新节点开辟空间
 		printf("请输入纯数字的小密码哦");
-		scanf("%d",&pnew->data);//输入节点的值
+		scanf("%d",pnew->data);//输入节点的值
 		(*h)->next = pnew;
 		pnew->next = NULL;
 	}else{
 		while(x--){
 			pnew = (LNode *)malloc(sizeof(struct LNode));//为新节点开辟空间
 			printf("请输入纯数字的小密码哦");
-			scanf("%d",&pnew->data);//输入节点的值
+			scanf("%d",pnew->data);//输入节点的值
+			printf("23");
 			(*p)->next = pnew;
 			p = pnew;
 		}
